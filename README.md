@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# IronForge Fitness
 
-## Getting Started
+A Next.js 16 / React 19 fitness-club website. The visual system uses ink-black, cool silver, and restrained champagne accents, with a full-width photographic hero, translucent glass surfaces, responsive layouts, and reduced-motion-aware animation.
 
-First, run the development server:
+## Run locally
 
-```bash
+```sh
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Production: `npm run build`, then `npm start`.
+Validation: `npm run lint`, `npm run test:security`, `npx tsc --noEmit`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Programs with category filters and a weekly schedule.
+- Coach profiles and membership comparisons with monthly/annual pricing.
+- Adult fitness estimates with metric/imperial inputs and invalid-input handling.
+- Enquiry review, email draft, copy, and edit flows.
+- First-visit guide, privacy information, keyboard navigation, reduced-motion support.
 
-## Learn More
+## Content and delivery
 
-To learn more about Next.js, take a look at the following resources:
+Business content lives in `src/data/gymData.ts`. The existing business address, phone number, coach identities, credentials, pricing, policies and schedule are sample content and must be approved or replaced by the client before launch. Photography is stock imagery from Unsplash, stored locally in public/images for reliable delivery; it is not verified photography of this facility. No testimonials, member statistics, or live spot counts are displayed on the homepage.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The enquiry form does not send messages or create reservations. It creates an email draft for the visitor to send. Confirm the destination email with the client. For automatic booking, integrate a real booking provider, server-side validation, abuse protection and delivery monitoring; never report success before a provider confirms it.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Security boundaries
 
-## Deploy on Vercel
+React handles text escaping. Email and phone validation reject control characters and malformed inputs; outbound URL checks reject network-path and backslash URLs. No secrets or form data are persisted by the application. Security headers prohibit framing and plugins, restrict resource origins, and disable production eval. Inline scripts remain allowed for Next.js static hydration; a nonce-based CSP would require a different rendering approach. Client validation is not a substitute for server validation if a backend is added.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The regression suite covers known input and header failures, not a comprehensive penetration test. Dependency audit was attempted, but npm’s legacy endpoint rejected the request and its bulk endpoint timed out. Known dependency vulnerabilities therefore remain unverified. Re-run the audit and check hosting behavior at release time.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Layout
+
+`src/app/home.module.css`: homepage composition.
+`src/app/globals.css`: shared theme, navigation, forms, footer and accessibility.
+`src/components`: shared navigation, pricing and section components.
+`next.config.mjs`: production headers and allowed image origin.
+
+Before public launch, verify ownership of the production domain and contact mailbox, replace sample business content and stock portraits, approve membership terms and privacy text, and validate the deployed site over HTTPS.

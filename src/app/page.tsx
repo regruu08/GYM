@@ -1,69 +1,196 @@
+import Link from "next/link";
 import Image from "next/image";
+import { ArrowRight, ArrowUpRight, MoveDown } from "lucide-react";
+import { programs, amenities } from "@/data/gymData";
+import { HomePricingSection } from "@/components/HomePricingSection";
+import styles from "./home.module.css";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className={styles.home}>
+      <section className={styles.hero}>
+        <div className={styles.heroCopy}>
+          <p className={styles.eyebrow}>
+            <span /> STRENGTH. CONDITIONING. COMMUNITY.
           </p>
+          <h1>
+            Built through
+            <br />
+            effort.
+            <br />
+            <em>Made for you.</em>
+          </h1>
+          <p className={styles.intro}>
+            A place to put in the work. Coaching that meets you where you are.
+            Discover a stronger everyday at IronForge.
+          </p>
+          <div className={styles.actions}>
+            <Link className={styles.primary} href="/contact">
+              Find your starting point <ArrowUpRight size={18} />
+            </Link>
+            <Link className={styles.textLink} href="/programs">
+              Explore training <ArrowRight size={17} />
+            </Link>
+          </div>
+          <div className={styles.heroFoot}>
+            <span>YOUR PACE. YOUR PROGRESS.</span>
+            <a href="#training" aria-label="Discover training">
+              <MoveDown size={19} />
+            </a>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className={styles.heroImage}>
+          <Image
+            src="/images/training-floor.jpg"
+            alt="Strength training floor with weights and training equipment"
+            fill
+            priority
+            sizes="100vw"
+          />
+          <div className={styles.imageLabel}>
+            <span className={styles.cardEyebrow}>
+              <span /> THE IRONFORGE STANDARD
+            </span>
+            <p>
+              Less distraction.
+              <br />
+              More dedication.
+            </p>
+            <div className={styles.cardBottom}>
+              <span>01 / THE TRAINING FLOOR</span>
+              <ArrowUpRight size={22} />
+            </div>
+          </div>
+          <div className={styles.imageTag}>SHOW UP FOR YOURSELF. ↗</div>
         </div>
-      </main>
+      </section>
+      <div className={styles.disciplines}>
+        {[
+          "Strength with purpose",
+          "Coaching with care",
+          "Room to recover",
+          "Progress that lasts",
+        ].map((s, i) => (
+          <span key={s}>
+            <small>0{i + 1}</small>
+            {s}
+          </span>
+        ))}
+      </div>
+      <section className={styles.section} id="training">
+        <div className={styles.sectionTop}>
+          <div>
+            <p className={styles.eyebrow}>01 / FIND YOUR PRACTICE</p>
+            <h2>
+              Different goals.
+              <br />
+              <em>One place to begin.</em>
+            </h2>
+          </div>
+          <div>
+            <p>
+              Start with what moves you. Build strength, find your rhythm, and
+              make training a part of your life.
+            </p>
+            <Link className={styles.textLink} href="/programs">
+              All programs & schedule <ArrowUpRight size={18} />
+            </Link>
+          </div>
+        </div>
+        <div className={styles.programs}>
+          {programs.slice(0, 3).map((p, i) => (
+            <Link
+              href={`/programs#${p.id}`}
+              className={styles.program}
+              key={p.id}
+            >
+              <div className={styles.programImage}>
+                <Image
+                  src={p.imageUrl}
+                  alt={p.name}
+                  fill
+                  sizes="(max-width: 700px) 100vw, 33vw"
+                />
+                <span>0{i + 1}</span>
+                <ArrowUpRight className={styles.programArrow} />
+              </div>
+              <div className={styles.programMeta}>
+                <span>{p.category}</span>
+                <span>{p.duration}</span>
+              </div>
+              <h3>{p.name}</h3>
+              <p>{p.tagline}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+      <section className={styles.philosophy}>
+        <div className={styles.philosophyPhoto}>
+          <Image
+            src={amenities[0].imageUrl}
+            alt="Equipment for focused strength training"
+            fill
+            sizes="(max-width: 800px) 100vw, 50vw"
+          />
+        </div>
+        <div className={styles.philosophyCopy}>
+          <p className={styles.eyebrow}>02 / THE WAY WE TRAIN</p>
+          <h2>
+            Good training.
+            <br />
+            <em>No shortcuts.</em>
+          </h2>
+          <p>
+            Getting stronger isn’t about doing everything at once. It’s about
+            learning the fundamentals, showing up consistently, and having the
+            right people in your corner.
+          </p>
+          {[
+            [
+              "A solid foundation",
+              "Learn the movement before you add the weight.",
+            ],
+            [
+              "Support along the way",
+              "Work with coaches who understand your starting point.",
+            ],
+            [
+              "Space to reset",
+              "Make recovery part of the routine, not an afterthought.",
+            ],
+          ].map(([title, text], i) => (
+            <div className={styles.principle} key={title}>
+              <span>0{i + 1}</span>
+              <div>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </div>
+            </div>
+          ))}
+          <Link href="/trainers" className={styles.textLink}>
+            Meet your coaches <ArrowUpRight size={18} />
+          </Link>
+        </div>
+      </section>
+      <HomePricingSection />
+      <section className={styles.visit}>
+        <p className={styles.eyebrow}>YOUR NEXT CHAPTER STARTS HERE</p>
+        <h2>
+          You don’t have to be ready.
+          <br />
+          <em>Just ready to start.</em>
+        </h2>
+        <p>
+          Come see the space, meet a coach, and talk about what you want from
+          your training.
+        </p>
+        <Link href="/contact" className={styles.primary}>
+          Plan your first visit <ArrowUpRight size={18} />
+        </Link>
+        <Link href="/first-visit" className={styles.textLink}>
+          What to expect <ArrowRight size={17} />
+        </Link>
+      </section>
     </div>
   );
 }

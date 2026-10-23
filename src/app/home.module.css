@@ -1,0 +1,762 @@
+.home {
+  --paper: #f6f4ef;
+  background: #090c10;
+  color: #dce3e7;
+  overflow: clip;
+}
+.hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 760px;
+  min-height: max(760px, calc(100svh - 88px));
+  display: flex;
+  align-items: center;
+  background: #090c10;
+}
+.heroImage {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+}
+.heroImage img {
+  object-fit: cover;
+  object-position: center 45%;
+  filter: saturate(0.32) brightness(0.75);
+  animation: sceneEnter 1.8s ease-out both;
+}
+.heroImage:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(5, 9, 14, 0.92) 0%,
+      rgba(5, 9, 14, 0.78) 32%,
+      rgba(5, 9, 14, 0.28) 68%,
+      rgba(5, 9, 14, 0.32) 100%
+    ),
+    linear-gradient(
+      0deg,
+      #090c10 0%,
+      transparent 35%,
+      rgba(5, 9, 14, 0.18) 100%
+    );
+  z-index: 1;
+}
+.hero:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse at 76% 35%,
+      rgba(171, 199, 215, 0.08),
+      transparent 42%
+    ),
+    radial-gradient(
+      ellipse at 30% 90%,
+      rgba(198, 175, 135, 0.06),
+      transparent 42%
+    );
+}
+.heroCopy {
+  width: 100%;
+  max-width: 1328px;
+  margin: auto;
+  padding: 74px 24px 105px;
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+}
+.heroCopy > * {
+  pointer-events: auto;
+}
+.eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #c6af87;
+}
+.eyebrow > span {
+  width: 5px;
+  height: 5px;
+  background: #e7d7b8;
+  border-radius: 50%;
+  box-shadow: 0 0 12px #e7d7b866;
+}
+.hero h1 {
+  font-size: clamp(68px, 6.5vw, 100px);
+  line-height: 1.02;
+  letter-spacing: -4.5px;
+  font-weight: 500;
+  margin: 32px 0 26px;
+  color: var(--paper);
+  max-width: 760px;
+  animation: arrive 0.9s 0.1s both;
+}
+.home em {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  color: #d4c1a0;
+}
+.intro {
+  font-size: 15px;
+  line-height: 1.9;
+  max-width: 400px;
+  color: #bac2cb;
+  animation: arrive 0.9s 0.2s both;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+  margin-top: 32px;
+  animation: arrive 0.9s 0.3s both;
+}
+.primary {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  gap: 26px;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(115deg, #dfcca8, #bca47c);
+  color: #12161b;
+  padding: 19px 25px;
+  border: 1px solid #ecddbd66;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 650;
+  box-shadow:
+    0 8px 26px #0003,
+    inset 0 1px #fff5;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+}
+.primary:before {
+  content: "";
+  position: absolute;
+  inset: -100% -60%;
+  z-index: -1;
+  background: linear-gradient(
+    110deg,
+    transparent 40%,
+    #fff7 50%,
+    transparent 60%
+  );
+  transform: translateX(-70%);
+  transition: transform 0.7s;
+}
+.primary:hover:before {
+  transform: translateX(70%);
+}
+.primary:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 12px 32px #c6af8722,
+    inset 0 1px #fff6;
+}
+.primary svg,
+.textLink svg {
+  transition: transform 0.3s;
+}
+.primary:hover svg,
+.textLink:hover svg {
+  transform: translate(3px, -2px);
+}
+.textLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  border-bottom: 1px solid #c6af8740;
+  padding: 12px 0;
+  color: #e0e4e7;
+  transition:
+    color 0.25s,
+    border-color 0.25s;
+}
+.textLink:hover {
+  color: #e7d7b8;
+  border-color: #c6af87;
+}
+.heroFoot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 570px;
+  border-top: 1px solid #dce3e724;
+  margin-top: 45px;
+  padding-top: 22px;
+  font-size: 8px;
+  letter-spacing: 2.5px;
+  color: #aeb9c3;
+}
+.heroFoot a {
+  padding: 8px;
+  border: 1px solid #ffffff26;
+  border-radius: 50%;
+  transition:
+    background 0.3s,
+    transform 0.3s;
+}
+.heroFoot a:hover {
+  background: #ffffff12;
+  transform: translateY(3px);
+}
+.imageLabel {
+  position: absolute;
+  bottom: 110px;
+  right: max(32px, calc((100vw - 1280px) / 2));
+  z-index: 3;
+  width: 280px;
+  padding: 28px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #ffffff36;
+  background: linear-gradient(135deg, #ffffff15, #ffffff04 55%, #d0dfec12);
+  backdrop-filter: blur(22px) saturate(140%);
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
+  box-shadow:
+    inset 0 1px 0 #ffffff38,
+    inset 0 -1px 0 #ffffff12,
+    0 24px 70px #0005;
+  animation: arrive 1.1s 0.4s both;
+  transition:
+    transform 0.45s,
+    border-color 0.45s,
+    box-shadow 0.45s;
+}
+.imageLabel:before {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  right: -160px;
+  top: -190px;
+  pointer-events: none;
+  border-radius: 45%;
+  border: 1px solid #ffffff38;
+  box-shadow:
+    0 0 55px #dce3e720,
+    inset 0 0 40px #ffffff12;
+  animation: waterLight 12s ease-in-out infinite alternate;
+}
+.imageLabel:hover {
+  transform: translateY(-6px);
+  border-color: #e7d7b877;
+  box-shadow:
+    inset 0 1px #ffffff55,
+    0 30px 70px #0006;
+}
+.cardEyebrow {
+  font-size: 8px;
+  letter-spacing: 1.8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #e7d7b8;
+}
+.cardEyebrow > span {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #e7d7b8;
+}
+.imageLabel p {
+  font-size: 30px;
+  line-height: 1.2;
+  margin: 25px 0 28px;
+  letter-spacing: -1px;
+  color: #f6f4ef;
+}
+.cardBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #ffffff24;
+  padding-top: 16px;
+}
+.cardBottom > span {
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  color: #bdc7d0;
+}
+.cardBottom svg {
+  color: #d4c1a0;
+}
+.imageTag {
+  position: absolute;
+  right: max(32px, calc((100vw - 1280px) / 2));
+  top: 35px;
+  z-index: 3;
+  color: #dce3e7;
+  font-size: 8px;
+  letter-spacing: 2px;
+  border: 1px solid #ffffff30;
+  padding: 12px 17px;
+  border-radius: 30px;
+  background: #0a101933;
+  backdrop-filter: blur(15px);
+}
+.disciplines {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  position: relative;
+  z-index: 3;
+  padding: 27px max(24px, calc((100vw - 1280px) / 2));
+  gap: 25px;
+  background: linear-gradient(110deg, #141c24aa, #11161b66);
+  border-top: 1px solid #ffffff15;
+  border-bottom: 1px solid #ffffff12;
+  backdrop-filter: blur(20px);
+  font-size: 11px;
+  color: #bac4cd;
+}
+.disciplines span {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.disciplines small {
+  color: #c6af87;
+  font-size: 9px;
+}
+.section {
+  max-width: 1280px;
+  margin: auto;
+  padding: 110px 24px;
+}
+.sectionTop {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 50px;
+  margin-bottom: 48px;
+}
+.home h2 {
+  font-size: clamp(36px, 4vw, 56px);
+  line-height: 1.12;
+  font-weight: 500;
+  letter-spacing: -2px;
+  margin: 21px 0;
+}
+.sectionTop > div:last-child {
+  max-width: 340px;
+}
+.sectionTop p:not(.eyebrow) {
+  font-size: 14px;
+  color: #a3adb7;
+  line-height: 1.9;
+  margin-bottom: 13px;
+}
+.programs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+.program {
+  padding: 10px 10px 24px;
+  border: 1px solid #ffffff12;
+  border-radius: 12px;
+  background: linear-gradient(140deg, #ffffff08, #ffffff02);
+  transition:
+    transform 0.4s,
+    border-color 0.4s,
+    box-shadow 0.4s;
+  overflow: hidden;
+}
+.program:hover {
+  transform: translateY(-7px);
+  border-color: #c6af8766;
+  box-shadow: 0 20px 50px #0005;
+}
+.programImage {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: #11161b;
+  border-radius: 7px;
+}
+.programImage img {
+  object-fit: cover;
+  filter: saturate(0.35) brightness(0.82);
+  transition:
+    transform 0.7s,
+    filter 0.7s;
+}
+.program:hover img {
+  transform: scale(1.055);
+  filter: saturate(0.6) brightness(0.95);
+}
+.programImage > span {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  border: 1px solid #ffffff30;
+  backdrop-filter: blur(16px);
+  background: #0b101655;
+  padding: 9px 12px;
+  border-radius: 4px;
+  font-size: 10px;
+}
+.programArrow {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  border: 1px solid #ffffff40;
+  backdrop-filter: blur(16px);
+  background: #ffffff18;
+  color: #f0e3cb;
+  padding: 11px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  transition:
+    transform 0.3s,
+    background 0.3s;
+}
+.program:hover .programArrow {
+  transform: rotate(45deg);
+  background: #c6af8755;
+}
+.programMeta {
+  display: flex;
+  justify-content: space-between;
+  margin: 22px 12px 12px;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+  color: #c6af87;
+}
+.program h3 {
+  font-size: 21px;
+  line-height: 1.3;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  margin: 0 12px;
+}
+.program > p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #a3adb7;
+  margin: 12px 12px 0;
+}
+.philosophy {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background:
+    radial-gradient(ellipse at 90% 30%, #c6af8709, transparent 65%), #10151b;
+  color: #dce3e7;
+  border-top: 1px solid #ffffff12;
+  border-bottom: 1px solid #ffffff12;
+}
+.philosophyPhoto {
+  position: relative;
+  min-height: 650px;
+  overflow: hidden;
+}
+.philosophyPhoto img {
+  object-fit: cover;
+  filter: saturate(0.3) brightness(0.65);
+  transition: transform 1s;
+}
+.philosophyPhoto:hover img {
+  transform: scale(1.035);
+}
+.philosophyPhoto:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 65%, #10151b);
+}
+.philosophyCopy {
+  padding: 72px clamp(24px, 5vw, 85px);
+}
+.philosophyCopy > p:not(.eyebrow) {
+  font-size: 14px;
+  line-height: 1.9;
+  max-width: 450px;
+  margin-bottom: 28px;
+  color: #a3adb7;
+}
+.principle {
+  display: flex;
+  gap: 24px;
+  border-top: 1px solid #ffffff16;
+  padding: 22px 0;
+  transition: padding-left 0.3s;
+}
+.principle:hover {
+  padding-left: 8px;
+}
+.principle > span {
+  font-size: 10px;
+  color: #c6af87;
+}
+.principle h3 {
+  font-size: 16px;
+  font-weight: 500;
+}
+.principle p {
+  font-size: 12px;
+  line-height: 1.8;
+  margin-top: 5px;
+  color: #a3adb7;
+}
+.visit {
+  text-align: center;
+  padding: 100px 24px 110px;
+  background:
+    radial-gradient(ellipse at 50% 100%, #c6af8712, transparent 60%), #0c1117;
+  border-top: 1px solid #ffffff15;
+}
+.visit .eyebrow {
+  justify-content: center;
+}
+.visit > p:not(.eyebrow) {
+  max-width: 440px;
+  margin: 24px auto 30px;
+  line-height: 1.8;
+  color: #a3adb7;
+  font-size: 14px;
+}
+.visit .textLink {
+  display: flex;
+  width: max-content;
+  margin: 18px auto 0;
+}
+@keyframes arrive {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes sceneEnter {
+  from {
+    transform: scale(1.035);
+    opacity: 0.5;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes waterLight {
+  from {
+    transform: translate(0, 0) rotate(-15deg);
+  }
+  to {
+    transform: translate(-35px, 20px) rotate(35deg);
+  }
+}
+@media (min-width: 1600px) {
+  .heroCopy {
+    padding-top: 100px;
+    padding-bottom: 130px;
+  }
+  .hero {
+    min-height: 850px;
+  }
+  .hero h1 {
+    font-size: 110px;
+  }
+}
+@media (max-width: 1100px) {
+  .hero h1 {
+    font-size: 76px;
+  }
+  .imageLabel {
+    width: 240px;
+    right: 24px;
+    bottom: 105px;
+    padding: 24px;
+  }
+  .imageLabel p {
+    font-size: 26px;
+  }
+  .heroFoot {
+    max-width: 510px;
+  }
+  .heroCopy {
+    padding-left: 32px;
+  }
+  .philosophyCopy {
+    padding: 50px 30px;
+  }
+}
+@media (max-width: 850px) {
+  .hero {
+    min-height: 850px;
+  }
+  .heroCopy {
+    padding: 65px 28px 270px;
+  }
+  .hero h1 {
+    font-size: 74px;
+  }
+  .heroImage img {
+    object-position: 62% center;
+  }
+  .heroImage:after {
+    background:
+      linear-gradient(90deg, #05090ee8, #05090e55),
+      linear-gradient(0deg, #090c10, transparent 45%);
+  }
+  .imageLabel {
+    right: 28px;
+    bottom: 34px;
+    width: 300px;
+    padding: 22px;
+  }
+  .imageLabel p {
+    font-size: 25px;
+    margin: 16px 0;
+  }
+  .heroFoot {
+    margin-top: 30px;
+  }
+  .imageTag {
+    display: none;
+  }
+  .disciplines {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .section {
+    padding: 75px 24px;
+  }
+}
+@media (max-width: 700px) {
+  .hero {
+    min-height: 840px;
+    align-items: flex-start;
+  }
+  .heroCopy {
+    padding: 50px 22px 260px;
+  }
+  .hero h1 {
+    font-size: 64px;
+    letter-spacing: -3px;
+    margin: 28px 0 22px;
+  }
+  .intro {
+    font-size: 14px;
+    max-width: 340px;
+  }
+  .actions {
+    gap: 20px;
+    margin-top: 28px;
+  }
+  .heroFoot {
+    font-size: 7px;
+    letter-spacing: 2px;
+  }
+  .imageLabel {
+    left: 22px;
+    right: 22px;
+    width: auto;
+    bottom: 30px;
+  }
+  .imageLabel p {
+    font-size: 26px;
+  }
+  .cardBottom {
+    padding-top: 12px;
+  }
+  .disciplines {
+    padding: 24px 22px;
+    gap: 22px 12px;
+    font-size: 10px;
+  }
+  .disciplines span {
+    gap: 10px;
+  }
+  .sectionTop {
+    display: block;
+  }
+  .sectionTop > div:last-child {
+    margin-top: 20px;
+  }
+  .programs {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .programImage {
+    aspect-ratio: 16/10;
+  }
+  .philosophy {
+    grid-template-columns: 1fr;
+  }
+  .philosophyPhoto {
+    min-height: 350px;
+  }
+  .philosophyPhoto:after {
+    background: linear-gradient(0deg, #10151b, transparent 65%);
+  }
+  .philosophyCopy {
+    padding: 38px 24px;
+  }
+  .visit {
+    padding: 70px 22px;
+  }
+  .eyebrow {
+    font-size: 8px;
+    letter-spacing: 1.8px;
+  }
+}
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 52px;
+    letter-spacing: -2px;
+  }
+  .hero {
+    min-height: 840px;
+  }
+  .heroCopy {
+    padding-top: 40px;
+  }
+  .primary {
+    padding: 17px 22px;
+  }
+  .actions {
+    gap: 12px 22px;
+  }
+  .heroFoot {
+    margin-top: 28px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero h1,
+  .intro,
+  .actions,
+  .heroImage img,
+  .imageLabel,
+  .imageLabel:before {
+    animation: none;
+  }
+  .program,
+  .programImage img,
+  .programArrow,
+  .philosophyPhoto img,
+  .primary,
+  .textLink svg,
+  .primary:before,
+  .principle {
+    transition: none;
+  }
+}
